@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-09
+
 ### Added
 
 - `kinsta_site` resource: create a WordPress site (`install_mode = "new"`) or an
@@ -29,4 +31,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   key, operation polling with Kinsta's failure reasons, serialized requests
   with rate-limit back-off, and actionable credential errors.
 
-[unreleased]: https://github.com/solcreek/terraform-provider-kinsta/commits/main
+[unreleased]: https://github.com/solcreek/terraform-provider-kinsta/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/solcreek/terraform-provider-kinsta/releases/tag/v0.1.0
