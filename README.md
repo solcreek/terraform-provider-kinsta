@@ -147,12 +147,11 @@ What happens with bad credentials:
 - **Secrets in state.** `admin_password` is stored in state (marked sensitive),
   like every Terraform argument. Change it in WordPress after creation if your
   state is shared.
-- **Verified live: reads.** Every resource's import and read, and every data
-  source, have been run against the live API (2026-11-09). DNS record writes
-  follow the format the companion
-  [kinsta CLI](https://www.npmjs.com/package/kinsta-cli) verified live; site,
+- **What is verified live** (2026-11-09): every resource's import and read and
+  every data source; and the full `kinsta_dns_record` lifecycle (create, update
+  values and TTL, import, delete) through the acceptance test. Site,
   environment and domain writes follow the API reference and are exercised
-  against an in-memory fake of the API.
+  against an in-memory fake of the API, not yet against the live API.
 
 ## Development
 
