@@ -1,0 +1,20 @@
+version: "2"
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - misspell
+    - unconvert
+  settings:
+    errcheck:
+      # Writing to an http.ResponseWriter conventionally ignores the error.
+      exclude-functions:
+        - (net/http.ResponseWriter).Write
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
