@@ -1,0 +1,39 @@
+---
+page_title: "{{.Name}} {{.Type}} - {{.ProviderName}}"
+subcategory: ""
+description: |-
+{{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{.Name}} ({{.Type}})
+
+{{ .Description | trimspace }}
+
+## Example Usage
+
+{{ tffile .ExampleFile }}
+
+## Creation-only arguments
+
+`install_mode`, `admin_email`, `admin_user`, `admin_password`, `site_title`, `wp_language`,
+`is_multisite`, `is_subdomain_multisite`, `woocommerce` and `wordpressseo` are sent only when
+the resource is created. Kinsta does not return them, so they are not compared with the live
+installation: changing one later updates the value in state (with a warning) and changes
+nothing in WordPress, and an imported resource does not need them at all.
+
+`admin_password` is stored in state (marked sensitive). Change the password in WordPress
+after creation if your state is shared.
+
+## Deleting
+
+`deletion_protection` defaults to `true`. With it set, destroying the resource — or a change
+that would replace it — fails before anything is deleted. To delete on purpose, back the
+site up, set `deletion_protection = false`, apply, and then destroy.
+
+{{ .SchemaMarkdown | trimspace }}
+
+## Import
+
+Import is supported using the following syntax:
+
+{{ codefile "shell" .ImportFile }}

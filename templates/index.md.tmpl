@@ -1,0 +1,39 @@
+---
+page_title: "Provider: Kinsta"
+description: |-
+  Manage Kinsta WordPress sites, environments, site domains and Kinsta DNS records.
+---
+
+# Kinsta Provider
+
+An unofficial, community-maintained provider for [Kinsta](https://kinsta.com) WordPress
+hosting, built on the [Kinsta API v2](https://api-docs.kinsta.com). It manages sites,
+staging environments, site domains and primary domains, and records on Kinsta DNS. It
+supports both OpenTofu and Terraform.
+
+Use the full `registry.opentofu.org/solcreek/kinsta` source address with either CLI.
+
+## Example Usage
+
+{{ tffile "examples/provider/provider.tf" }}
+
+## Authentication
+
+Create an API key in MyKinsta under *Company settings → API keys* and pass it through the
+`KINSTA_API_KEY` environment variable (or the `api_key` argument). Every key belongs to one
+company; the provider looks it up from the key unless `company_id` (or `KINSTA_COMPANY_ID`)
+is set. Keys can expire: a `401` is reported as an invalid, expired or revoked key.
+
+## Lifecycle behavior
+
+- Kinsta runs most changes asynchronously. The provider waits for each operation to finish
+  and reports Kinsta's reason when one fails.
+- `kinsta_site` and `kinsta_environment` default to `deletion_protection = true`, because a
+  delete removes files and databases and Kinsta has no undo. Apply `false` before destroying.
+- WordPress installation arguments (admin user, title, language, plugins) only apply when a
+  site or environment is created. Kinsta never returns them, so they are not tracked as drift
+  and changing them later does not replace anything.
+- An environment always has a primary domain, so destroying `kinsta_primary_domain` leaves
+  it in place. Move the primary domain away from a `kinsta_site_domain` before destroying it.
+
+{{ .SchemaMarkdown | trimspace }}

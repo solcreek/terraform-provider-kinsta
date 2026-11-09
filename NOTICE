@@ -1,0 +1,14 @@
+Terraform / OpenTofu Provider for Kinsta
+Source: https://github.com/solcreek/terraform-provider-kinsta
+Original source is licensed under Mozilla Public License 2.0.
+
+This is an independent community project. It is not affiliated with, endorsed
+by, or supported by Kinsta Inc. "Kinsta" and "MyKinsta" are trademarks of
+their respective owner, and "WordPress" is a trademark of the WordPress
+Foundation; they are used here only to describe what the provider works with.
+
+The provider uses the Terraform Plugin Framework (MPL-2.0) and a
+standard-library-only Kinsta API client. Dependencies retain their own
+licenses and copyright notices. Release archives include dependency licenses,
+notices, and source where required under third_party/. Dependency versions
+are recorded in go.mod and go.sum at the corresponding release tag.
